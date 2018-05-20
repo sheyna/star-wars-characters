@@ -6,37 +6,35 @@ import {
   BrowserRouter as Router
 } from "react-router-dom";
 import PersonDetail from './PersonDetail/PersonDetail';
+import PersonCard from './PersonCard/PersonCard';
+import Home from './Home/Home';
 
 // app.use(express.static(path.join(__dirname, 'public')));
 // const srcPath = path.join(__dirname, '..', 'publicfolder')
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      people: []
-    }
-  }
 
-  componentDidMount() {
-    fetch('https://swapi.co/api/films')
-      .then(response => response.json())
-      .then(data => {
-        // console.log(data);
-        this.setState((prevState, props) => {
-          return {
-            people: data.results
-          };
-        });
-      })
-      .catch(error => console.log(error));
-  };
+  // HomePage = (props) => {
+  //   return (
+  //     <home
+  //       people={this.state.people}
+  //       {...props} />
+  //   );
+  // }
 
   render() {
     return (
       <Router>
         <div className="App">
-          <Route path="/people/:peopleId" component={PersonDetail} />
+          <header>
+            <img src="/logo.png" className="App-logo" alt="logo" />
+            <h1>Character Index</h1>
+            <div className="header-shape"></div>
+          </header>
+          <main>
+            <Route exact path="/" component={Home}/>
+            <Route path="/people/:peopleId" component={PersonDetail} />
+          </main>
         </div>
       </Router>
     );
@@ -45,6 +43,4 @@ class App extends Component {
 
 export default App;
 
-      // {this.state.films.map((film, idx =>
-      //     <p key={idx}>{film.title}</p>)
-      // }
+      // <Route exact path="/" render={this.HomePage}/>

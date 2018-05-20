@@ -49,17 +49,79 @@ table {
 
 /* FONTS */
 
-/*@font-face {
-  font-family: 'Open Sans';
+@import url('https://fonts.googleapis.com/css?family=Glegoo');
+
+@font-face {
+  font-family: 'Aurebesh';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/open-sans-v13-latin-regular.eot'); /* IE9 Compat Modes */
-  /*src: local('Open Sans'), local('OpenSans'),
-       url('../fonts/open-sans-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       /*url('../fonts/open-sans-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       /*url('../fonts/open-sans-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
-       /*url('../fonts/open-sans-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       /*url('../fonts/open-sans-v13-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */*/
+  src: url('./fonts/Aurebesh.otf') format('opentype');
 }
 
+.App-logo {
+  margin-left: 2rem;
+  width: 15rem;
+}
 
+* {
+  box-sizing: border-box;
+  color: #9a9a9a;
+}
+
+.styleized-font {
+  font-family: 'Aurebesh', sans-serif;
+}
+
+.App header {
+  padding: 1rem 4rem .5rem 4rem;
+  background-color: white;
+  position: relative;
+  border-top: 1rem solid #f8f8f8;
+}
+
+.App header h1 {
+  display: inline-block;
+  font-family: 'Glegoo', cursive;
+  font-size: 2.1rem;
+  margin-left: .6rem;
+  color: #585858;
+}
+
+.App header .header-shape {
+  width: 40rem;
+  height: 2rem;
+  background-color: white;
+  bottom: -2rem;
+  position: absolute;
+  margin: 0 auto;
+}
+
+.App header .header-shape::after,
+.App header .header-shape::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-top: 2rem solid white;
+  position: absolute;
+  top: 0;
+}
+
+.App header .header-shape::before {
+  left: -2rem;
+}
+
+.App header .header-shape::after {
+  right: -2rem;
+}
+
+.App main {
+  max-width: 65rem;
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
+.App {
+  background-color: gainsboro;
+}
