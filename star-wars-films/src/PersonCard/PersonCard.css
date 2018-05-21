@@ -64,12 +64,6 @@
   }
 }
 
-/*@media screen and (min-width: 768px) {
-  .person-card {
-    width: 32%;
-  }
-}*/
-
 @media screen and (min-width: 1024px) {
   .person-card {
     width: 32%;

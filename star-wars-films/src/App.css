@@ -59,7 +59,6 @@ table {
 }
 
 .App-logo {
-  margin-left: 2rem;
   width: 15rem;
 }
 
@@ -73,22 +72,17 @@ table {
 }
 
 .App header {
-  padding: 1rem 4rem .5rem 4rem;
   background-color: white;
   position: relative;
   border-top: 1rem solid #f8f8f8;
 }
 
 .App header h1 {
-  display: inline-block;
   font-family: 'Glegoo', cursive;
-  font-size: 2.1rem;
-  margin-left: .6rem;
   color: #585858;
 }
 
 .App header .header-shape {
-  width: 40rem;
   height: 2rem;
   background-color: white;
   bottom: -2rem;
@@ -124,4 +118,40 @@ table {
 
 .App {
   background-color: gainsboro;
+}
+
+@media screen and (max-width: 767px) {
+  .App header h1 {
+    font-size: 1.5rem;
+    display: block;
+    margin-left: 1rem;
+    margin-top: .2rem;
+  }
+  .App header {
+    padding: 1rem 4rem .5rem 1.5rem;
+  }
+  .App header .header-shape {
+    width: 19rem;
+  }
+  .App-logo {
+    margin-left: .5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .App header h1 {
+    font-size: 2.1rem;
+    display: inline-block;
+    margin-left: .6rem;
+    margin-top: 0;
+  }
+  .App header {
+    padding: 1rem 4rem .5rem 4rem;
+  }
+  .App header .header-shape {
+    width: 40rem;
+  }
+  .App-logo {
+    margin-left: 2rem;
+  }
 }
