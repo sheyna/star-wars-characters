@@ -1,0 +1,214 @@
+.person-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin-bottom: 4rem
+}
+
+.person-detail .media {
+  background-color: #b0b0b0;
+  position: relative;
+  background-position: center right;
+  background-size: cover;
+  flex-basis: 60%;
+  overflow: hidden;
+  flex-shrink: 1;
+}
+
+.person-detail .media div:first-child {
+  position: absolute;
+  top: .5rem;
+  left: 5rem;
+}
+.person-detail .media div:nth-child(2) {
+  position: absolute;
+  bottom: .5rem;
+  right: 8rem;
+}
+
+.person-detail .media::after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  border-left: 8rem solid transparent;
+  border-right: 8rem solid transparent;
+  border-bottom: 8rem solid gainsboro;
+  right: -8rem;
+}
+
+.person-detail .media::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  border-left: 4rem solid transparent;
+  border-right: 4rem solid transparent;
+  border-top: 4rem solid gainsboro;
+  left: -4rem;
+}
+
+.person-detail .stats {
+  background-color: white;
+  position: relative;
+  margin-right: -2rem;
+  z-index: 6;
+}
+
+.person-detail .stats .stats--shape::after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  border-left: 4rem solid transparent;
+  border-right: 4rem solid transparent;
+  border-bottom: 4rem solid gainsboro;
+  left: -4rem;
+}
+
+.person-detail .stats::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.person-detail .stats .stats--shape {
+  background-color: white;
+  height: auto;
+  padding: 0 2rem 2rem 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.person-detail .content h1 {
+  font-family: 'Glegoo', serif;
+  font-size: 2rem;
+  color: #585858;
+}
+
+.person-detail .stats h2 {
+  font-family: 'Glegoo', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.person-detail .stats--shape dt {
+  font-weight: 600;
+  margin-right: .2rem;
+  color: #585858;
+}
+
+.person-detail .stats--shape dl {
+  padding: .2rem;
+  margin-bottom: .4rem;
+  background-color: #f8f8f8;
+}
+
+.person-detail .stats--shape > .stat--chart {
+  width: 49%;
+  padding-top: .4rem;
+}
+
+.person-detail .stats--shape > .stat--notes {
+  width: 100%;
+  flex-basis: 100%;
+  margin-top: .8rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid gainsboro;
+}
+
+.person-detail .stats--shape > .stat--notes p {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.person-detail .stats--shape dt,
+.person-detail .stats--shape dd {
+  display: inline-block;
+  position: relative;
+  width: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .person-detail {
+    flex-direction: column-reverse;
+    margin: 0 1rem 1rem 1rem;
+  }
+  .person-detail .content {
+    flex-basis: auto;
+  }
+  .person-detail .content h1 {
+    margin: 1rem 0 1rem 1rem;
+  }
+  .person-detail .stats {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    padding: 2rem 0 0 0;
+    overflow: auto;
+  }
+  .person-detail .stats::before {
+    top: 0;
+    border-left: 4rem solid transparent;
+    border-right: 4rem solid transparent;
+    border-top: 4rem solid gainsboro;
+    right: -4rem;
+  }
+  .person-detail .media {
+    height: 16rem;
+  }
+  .person-detail .stats .stats--shape {
+    width: 100%;
+    position: relative;
+  }
+  .person-detail .stats h2 {
+    margin-top: 0;
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .person-detail {
+    flex-direction: row;
+  }
+  .person-detail .content {
+    flex-basis: 40%;
+  }
+  .person-detail .content h1 {
+    margin: 1rem 0 1rem 4rem;
+  }
+  .person-detail .stats {
+    margin-left: 2rem;
+    margin-right: -2rem;
+    padding: 3rem 2rem 4rem 2rem;
+    overflow: visible;
+  }
+  .person-detail .stats::before {
+    top: 2rem;
+    border-left: 4rem solid transparent;
+    border-right: 4rem solid transparent;
+    border-bottom: 4rem solid white;
+    right: -6rem;
+    transform: rotate(90deg);
+  }
+  .person-detail .media {
+    height: 24rem;
+  }
+  .person-detail .stats .stats--shape {
+    width: calc(100% + 4rem);
+    right: -4rem;
+    position: absolute;
+    top: 4rem;
+  }
+  .person-detail .stats h2 {
+    margin-top: -1rem;
+    margin-left: 1rem;
+  }
+}

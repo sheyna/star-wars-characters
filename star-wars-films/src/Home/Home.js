@@ -11,28 +11,34 @@ class home extends Component {
   }
 
   componentDidMount() {
-    fetch('https://swapi.co/api/people')
+    let pageNum = this.props.match.params.pageNum;
+    if (pageNum === undefined ) {
+      pageNum = 1;
+    }
+    console.log(pageNum);
+    fetch(`https://swapi.co/api/people/?page=${pageNum}`)
       .then(response => response.json())
       .then(data => {
-        // console.log(data);
+        if (data.results.length > 0) {
+        console.log(data);
         this.setState((prevState, props) => {
           return {
             people: data.results
           };
         });
+      } else {
+        return {};
+      }
       })
       .catch(error => console.log(error));
   };
 
-
   render() {
-
     const people = this.state.people;
     return (
-
       <div className="home page-content">
         {people.map((people, idx) => {
-          return <PersonCard key={idx} indexNum={idx} people={people} />;
+          return <PersonCard key={idx} people={people} />;
         })}
       </div>
     )

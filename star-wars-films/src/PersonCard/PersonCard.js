@@ -8,8 +8,8 @@ class PersonCard extends Component {
 
   render() {
     const people = this.props.people;
-    const num = parseInt(this.props.indexNum);
-    const indexNumber = num + 1;
+    const url = people.url;
+    const indexNumber = url.split('/').reverse()[1];
     const backgroundMediaStyles = {
         backgroundImage: 'url(\'/characters/character-' + indexNumber + '.jpg\')',
     };
@@ -24,7 +24,6 @@ class PersonCard extends Component {
         </div>
         </Link>
       </div>
-
     )
   }
 }

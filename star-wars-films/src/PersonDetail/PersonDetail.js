@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './PersonDetail.css';
 
 class PersonDetail extends Component {
   constructor(props) {
@@ -10,11 +11,9 @@ class PersonDetail extends Component {
 
   componentDidMount() {
     const peopleId = this.props.match.params.peopleId;
-    console.log(peopleId);
     fetch(`https://swapi.co/api/people/${peopleId}/`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         this.setState((prevState, props) => {
           return {
             people: data
@@ -24,16 +23,72 @@ class PersonDetail extends Component {
       .catch(error => console.log(error));
   };
 
-  render() {
-    const { name, height, mass, hair_color, skin_color, eye_color } = this.state.people
+  getFilmList(films) {
+    const filmNames = ["A New Hope", "The Empire Strikes Back", "Return of the Jedi", "The Phantom Menace", "Attack of the Clones", "Revenge of the Sith", "The Force Awakens", "The Last Jedi"];
+    let finalFilmList = '';
+    for (let i = 0; i < films.length; i++){
+      const url = films[i];
+      let filmNum = url.split('/').reverse()[1];
+      filmNum = filmNum - 1;
+      finalFilmList += filmNames[filmNum];
+      if (i < (films.length - 1)) {
+        finalFilmList += ", ";
+      }
+    }
     return (
-      <div>
-        <h1>{name}</h1>
-        <dl><dt>height</dt><dd>{height}</dd></dl>
-        <dl><dt>mass</dt><dd>{mass}</dd></dl>
-        <dl><dt>hair color</dt><dd>{hair_color}</dd></dl>
-        <dl><dt>skin color</dt><dd>{skin_color}</dd></dl>
-        <dl><dt>eye color</dt><dd>{eye_color}</dd></dl>
+      <span>
+        {finalFilmList}
+      </span>
+    );
+  };
+
+// // Can't do below as return statement in getFilmList
+// // tells me that finalFilmList.map is not a function;
+// // tried finalFilmList.forEach and got the same error.
+//
+// {finalFilmList.map((finalFilmList, idx) => {
+//          return <span>{finalFilmList}, </span>
+//        })}
+
+  render() {
+    const { name, height, mass, hair_color, skin_color, eye_color, birth_year, gender } = this.state.people;
+    const films = this.state.people.films;
+    const peopleIdNum = this.props.match.params.peopleId;
+    const backgroundStyles = {
+        backgroundImage: 'url(\'/characters/character-' + peopleIdNum + '.jpg\')',
+    };
+    return (
+      <div className="page-content">
+      <section className="person-detail">
+        <div className="content">
+          <h1>{name}</h1>
+          <aside className="stats">
+            <h2>Vital Stats</h2>
+            <div className="stats--shape">
+              <div className="stat--chart">
+                <dl><dt>Height:</dt><dd>{height} cm</dd></dl>
+                <dl><dt>Mass:</dt><dd>{mass} kg</dd></dl>
+                <dl><dt>Hair color:</dt><dd>{hair_color}</dd></dl>
+                <dl><dt>Skin color:</dt><dd>{skin_color}</dd></dl>
+              </div>
+              <div className="stat--chart">
+                <dl><dt>Eye color:</dt><dd>{eye_color}</dd></dl>
+                <dl><dt>Birth year:</dt><dd>{birth_year}</dd></dl>
+                <dl><dt>Gender:</dt><dd>{gender}</dd></dl>
+                <dl><dt>Homeworld:</dt><dd></dd></dl>
+              </div>
+              <div className="stat--notes">
+                <p> Appears in: <span className="emph">{films ? this.getFilmList(films) : "none" }</span></p>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div className="media" style={backgroundStyles}>
+          <div className="styleized-font">{name}</div>
+          <div className="styleized-font">{name}</div>
+        </div>
+      </section>
       </div>
     )
   }

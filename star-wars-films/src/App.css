@@ -1,3 +1,5 @@
+
+/* NORMALIZE */
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -49,7 +51,7 @@ table {
 
 /* FONTS */
 
-@import url('https://fonts.googleapis.com/css?family=Glegoo');
+@import url('https://fonts.googleapis.com/css?family=Glegoo|Open+Sans+Condensed:300');
 
 @font-face {
   font-family: 'Aurebesh';
@@ -58,48 +60,89 @@ table {
   src: url('./fonts/Aurebesh.otf') format('opentype');
 }
 
-.App-logo {
-  width: 15rem;
-}
+/* GENERAL RULES */
 
 * {
   box-sizing: border-box;
   color: #9a9a9a;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .styleized-font {
   font-family: 'Aurebesh', sans-serif;
 }
 
+.emph {
+  font-weight: 600;
+  color: #585858;
+}
+
+.App {
+  position: relative;
+  background-color: gainsboro;
+}
+
+/* HEADER AND FOOTER */
+
+.App footer,
 .App header {
   background-color: white;
   position: relative;
+}
+
+.App header {
   border-top: 1rem solid #f8f8f8;
 }
 
-.App header h1 {
-  font-family: 'Glegoo', cursive;
-  color: #585858;
+.App footer {
+  border-bottom: 1rem solid #f8f8f8;
+}
+
+.App header .header-shape,
+.App footer .footer-shape {
+  background-color: white;
+  position: absolute;
+  margin: 0 auto;
 }
 
 .App header .header-shape {
   height: 2rem;
   background-color: white;
   bottom: -2rem;
+}
+
+.App footer .footer-shape {
+  height: 6rem;
+  top: -6rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.App header .header-shape::after,
+.App header .header-shape::before,
+.App footer .footer-shape::after,
+.App footer .footer-shape::before {
+  content: '';
+  width: 0;
+  height: 0;
   position: absolute;
-  margin: 0 auto;
+  top: 0;
 }
 
 .App header .header-shape::after,
 .App header .header-shape::before {
-  content: '';
-  width: 0;
-  height: 0;
   border-left: 2rem solid transparent;
   border-right: 2rem solid transparent;
   border-top: 2rem solid white;
-  position: absolute;
-  top: 0;
+}
+
+.App footer .footer-shape::after,
+.App footer .footer-shape::before {
+  border-left: 6rem solid transparent;
+  border-right: 6rem solid transparent;
+  border-bottom: 6rem solid white;
 }
 
 .App header .header-shape::before {
@@ -110,14 +153,31 @@ table {
   right: -2rem;
 }
 
-.App main {
-  max-width: 65rem;
-  margin: 0 auto;
-  padding: 5rem 0;
+.App footer .footer-shape::before {
+  left: -6rem;
 }
 
-.App {
-  background-color: gainsboro;
+.App footer .footer-shape::after {
+  right: -6rem;
+}
+
+/* header and footer type and site logo */
+
+.App header h1 {
+  font-family: 'Glegoo', serif;
+  color: #585858;
+}
+
+.App footer .footer-shape p {
+  font-size: .8rem;
+  z-index: 4;
+  position: relative;
+  margin-bottom: .2rem;
+  font-family: 'Glegoo', serif;
+}
+
+.App-logo {
+  width: 15rem;
 }
 
 @media screen and (max-width: 767px) {
@@ -127,11 +187,16 @@ table {
     margin-left: 1rem;
     margin-top: .2rem;
   }
+  .App footer,
   .App header {
     padding: 1rem 4rem .5rem 1.5rem;
   }
+  .App footer .footer-shape,
   .App header .header-shape {
     width: 19rem;
+  }
+  .App footer .footer-shape {
+    right: 6rem;
   }
   .App-logo {
     margin-left: .5rem;
@@ -145,13 +210,71 @@ table {
     margin-left: .6rem;
     margin-top: 0;
   }
+  .App footer,
   .App header {
     padding: 1rem 4rem .5rem 4rem;
+  }
+  .App footer .footer-shape {
+    width: 35rem;
+    right: 8rem;
   }
   .App header .header-shape {
     width: 40rem;
   }
   .App-logo {
     margin-left: 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .App footer::before,
+  .App header::before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 6rem solid transparent;
+    border-right: 6rem solid transparent;
+  }
+  .App header::before {
+    border-top: 6rem solid white;
+    bottom: -3rem;
+    right: -3rem;
+    transform: rotate(90deg);
+  }
+  .App footer::before {
+    border-bottom: 6rem solid white;
+    top: -6rem;
+    left: -6rem;
+  }
+}
+
+/* MAIN */
+
+
+.App main {
+  max-width: 65rem;
+  margin: 0 auto;
+}
+
+.page-content {
+  padding: 0 1.5rem;
+}
+
+@media screen and (max-width: 767px) {
+  .App main {
+    padding: 5rem 0 8rem 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .App main {
+    padding: 5rem 0 8rem 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .App main {
+    padding: 5rem 0;
   }
 }
