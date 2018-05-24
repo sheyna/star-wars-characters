@@ -41,17 +41,29 @@ class PersonDetail extends Component {
       </span>
     );
   };
+  // // Can't do below as return statement in getFilmList
+  // // tells me that finalFilmList.map is not a function;
+  // // tried finalFilmList.forEach and got the same error.
+  //
+  // {finalFilmList.map((finalFilmList, idx) => {
+  //          return <span>{finalFilmList}, </span>
+  //        })}
 
-// // Can't do below as return statement in getFilmList
-// // tells me that finalFilmList.map is not a function;
-// // tried finalFilmList.forEach and got the same error.
-//
-// {finalFilmList.map((finalFilmList, idx) => {
-//          return <span>{finalFilmList}, </span>
-//        })}
+  getHomePlanet(planet) {
+    const planetNames = ["Tatooine","Alderaan","Yavin IV","Hoth","Dagobah","Bespin","Endor","Naboo","Coruscant", "Kamino", "Geonosis", "Utapau", "Mustafar", "Kashyyyk", "Polis Massa", "Mygeeto", "Felucia", "Cato Neimoidia", "Saleucami", "Stewjon", "Eriadu", "Corellia", "Rodia", "Nal Hutta", "Dantooine", "Bestine IV", "Ord Mantell", "unknown", "Trandosha", "Socorro", "Mon Cala", "Chandrila", "Sullust", "Toydaria", "Malastare", "Dathomir", "Ryloth", "Aleen Minor", "Vulpter", "Troiken", "Tund", "Haruun Kal", "Cerea", "Glee Anselm", "Iridonia", "Tholoth", "Iktotch", "Quermia", "Dorin", "Champala", "Mirial", "Serenno", "Concord Dawn","Zolan","Ojom","Skako","Muunilinst","Shili","Kalee","Umbara","Jakku"]
+      const url = planet;
+      let planetNum = url.split('/').reverse()[1];
+      planetNum = planetNum - 1;
+      const finalPlanet = planetNames[planetNum];
+    return (
+      <span>
+        {finalPlanet}
+      </span>
+    );
+  };
 
   render() {
-    const { name, height, mass, hair_color, skin_color, eye_color, birth_year, gender } = this.state.people;
+    const { name, height, mass, hair_color, skin_color, eye_color, birth_year, gender, homeworld } = this.state.people;
     const films = this.state.people.films;
     const peopleIdNum = this.props.match.params.peopleId;
     const backgroundStyles = {
@@ -75,7 +87,7 @@ class PersonDetail extends Component {
                 <dl><dt>Eye color:</dt><dd>{eye_color}</dd></dl>
                 <dl><dt>Birth year:</dt><dd>{birth_year}</dd></dl>
                 <dl><dt>Gender:</dt><dd>{gender}</dd></dl>
-                <dl><dt>Homeworld:</dt><dd></dd></dl>
+                <dl><dt>Homeworld:</dt>{homeworld ? this.getHomePlanet(homeworld) : "unknown"}<dd></dd></dl>
               </div>
               <div className="stat--notes">
                 <p> Appears in: <span className="emph">{films ? this.getFilmList(films) : "none" }</span></p>
@@ -95,3 +107,5 @@ class PersonDetail extends Component {
 }
 
 export default PersonDetail;
+
+
