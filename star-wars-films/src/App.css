@@ -275,6 +275,6 @@ table {
 
 @media screen and (min-width: 1024px) {
   .App main {
-    padding: 5rem 0;
+    padding: 5rem 0 7rem 0;
   }
 }

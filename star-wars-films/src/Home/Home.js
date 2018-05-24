@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import PersonCard from '../PersonCard/PersonCard';
+import {
+  Link
+} from "react-router-dom";
 import './Home.css';
 
 class home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      people: []
+      people: [],
     }
+  }
+
+  getLink(pageNo, linkText) {
+    return (
+    <Link to={`/page/${pageNo}`} style={{ textDecoration: 'none' }} refresh="true">{linkText}</Link>
+    );
   }
 
   componentDidMount() {
@@ -15,19 +24,28 @@ class home extends Component {
     if (pageNum === undefined ) {
       pageNum = 1;
     }
-    console.log(pageNum);
+    this.setState((prevState, props) => {
+      return {
+        people: []
+      };
+    });
     fetch(`https://swapi.co/api/people/?page=${pageNum}`)
       .then(response => response.json())
       .then(data => {
         if (data.results.length > 0) {
-        console.log(data);
         this.setState((prevState, props) => {
           return {
-            people: data.results
+            people: data.results,
+            next: (parseInt(pageNum) + 1),
+            prev: (parseInt(pageNum) - 1)
           };
         });
       } else {
-        return {};
+        this.setState((prevState, props) => {
+          return {
+            people: []
+          };
+        });
       }
       })
       .catch(error => console.log(error));
@@ -36,10 +54,16 @@ class home extends Component {
   render() {
     const people = this.state.people;
     return (
-      <div className="home page-content">
-        {people.map((people, idx) => {
-          return <PersonCard key={idx} people={people} />;
-        })}
+      <div className="home">
+        <section className="page-content">
+          {people.map((people, idx) => {
+            return <PersonCard key={idx} people={people} />;
+          })}
+        </section>
+        <div className="pagination">
+          {this.state.prev >= 1 ? this.getLink(this.state.prev, "Previous") : null}
+          {this.state.next < 9 ? this.getLink(this.state.next, "Next") : null}
+        </div>
       </div>
     )
   }
