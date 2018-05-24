@@ -26,7 +26,7 @@ class App extends Component {
           </header>
           <main>
             <Route exact path="/" component={Home}/>
-            <Route path="/page/:pageNum" onChange={this.componentDidMount()} component={Home}/>
+            <Route path="/page/:pageNum" component={Home}/>
             <Route path="/people/:peopleId" component={PersonDetail} />
           </main>
           <footer>
