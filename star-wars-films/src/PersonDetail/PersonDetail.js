@@ -51,10 +51,10 @@ class PersonDetail extends Component {
 
   getHomePlanet(planet) {
     const planetNames = ["Tatooine","Alderaan","Yavin IV","Hoth","Dagobah","Bespin","Endor","Naboo","Coruscant", "Kamino", "Geonosis", "Utapau", "Mustafar", "Kashyyyk", "Polis Massa", "Mygeeto", "Felucia", "Cato Neimoidia", "Saleucami", "Stewjon", "Eriadu", "Corellia", "Rodia", "Nal Hutta", "Dantooine", "Bestine IV", "Ord Mantell", "unknown", "Trandosha", "Socorro", "Mon Cala", "Chandrila", "Sullust", "Toydaria", "Malastare", "Dathomir", "Ryloth", "Aleen Minor", "Vulpter", "Troiken", "Tund", "Haruun Kal", "Cerea", "Glee Anselm", "Iridonia", "Tholoth", "Iktotch", "Quermia", "Dorin", "Champala", "Mirial", "Serenno", "Concord Dawn","Zolan","Ojom","Skako","Muunilinst","Shili","Kalee","Umbara","Jakku"]
-      const url = planet;
-      let planetNum = url.split('/').reverse()[1];
-      planetNum = planetNum - 1;
-      const finalPlanet = planetNames[planetNum];
+    const url = planet;
+    let planetNum = url.split('/').reverse()[1];
+    planetNum = planetNum - 1;
+    const finalPlanet = planetNames[planetNum];
     return (
       <span>
         {finalPlanet}

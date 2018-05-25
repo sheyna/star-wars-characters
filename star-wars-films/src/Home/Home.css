@@ -13,8 +13,9 @@
   justify-content: center;
 }
 
-.home .pagination a {
+.home .pagination button {
   font-size: 1.2rem;
   margin: 0 1rem;
   color: #585858;
+  cursor: pointer;
 }

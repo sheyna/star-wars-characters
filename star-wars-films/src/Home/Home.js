@@ -10,34 +10,18 @@ class home extends Component {
     super(props);
     this.state = {
       people: [],
+      page: 1
     }
-  }
-
-  getLink(pageNo, linkText) {
-    return (
-    <Link to={`/page/${pageNo}`} style={{ textDecoration: 'none' }} refresh="true">{linkText}</Link>
-    );
   }
 
   componentDidMount() {
-    let pageNum = this.props.match.params.pageNum;
-    if (pageNum === undefined ) {
-      pageNum = 1;
-    }
-    this.setState((prevState, props) => {
-      return {
-        people: []
-      };
-    });
-    fetch(`https://swapi.co/api/people/?page=${pageNum}`)
+    fetch(`https://swapi.co/api/people/?page=${this.state.page}`)
       .then(response => response.json())
       .then(data => {
         if (data.results.length > 0) {
         this.setState((prevState, props) => {
           return {
-            people: data.results,
-            next: (parseInt(pageNum) + 1),
-            prev: (parseInt(pageNum) - 1)
+            people: data.results
           };
         });
       } else {
@@ -51,6 +35,30 @@ class home extends Component {
       .catch(error => console.log(error));
   };
 
+  next = () => {
+    this.setState((prevState) => {
+      return { page: prevState.page + 1 };
+    }, this.componentDidMount);
+  }
+
+  previous = () => {
+    this.setState((prevState) => {
+      return { page: prevState.page - 1 };
+    }, this.componentDidMount);
+  }
+
+  getPrevButton() {
+    return (
+      <button onClick={this.previous}>Previous</button>
+    );
+  }
+
+  getNextButton() {
+    return (
+      <button onClick={this.next}>Next</button>
+    );
+  }
+
   render() {
     const people = this.state.people;
     return (
@@ -61,8 +69,8 @@ class home extends Component {
           })}
         </section>
         <div className="pagination">
-          {this.state.prev >= 1 ? this.getLink(this.state.prev, "Previous") : null}
-          {this.state.next < 9 ? this.getLink(this.state.next, "Next") : null}
+          {this.state.page > 1 ? this.getPrevButton() : null}
+          {this.state.page < 9 ? this.getNextButton() : null}
         </div>
       </div>
     )

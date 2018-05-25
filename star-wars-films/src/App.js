@@ -11,8 +11,6 @@ import Home from './Home/Home';
 
 class App extends Component {
 
-
-
   render() {
     return (
       <Router>
@@ -26,7 +24,6 @@ class App extends Component {
           </header>
           <main>
             <Route exact path="/" component={Home}/>
-            <Route path="/page/:pageNum" component={Home}/>
             <Route path="/people/:peopleId" component={PersonDetail} />
           </main>
           <footer>
