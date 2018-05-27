@@ -5,7 +5,7 @@ class PersonDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      people: {}
+      person: {}
     }
   }
 
@@ -16,7 +16,7 @@ class PersonDetail extends Component {
       .then(data => {
         this.setState((prevState, props) => {
           return {
-            people: data
+            person: data
           };
         });
       })
@@ -63,8 +63,8 @@ class PersonDetail extends Component {
   };
 
   render() {
-    const { name, height, mass, hair_color, skin_color, eye_color, birth_year, gender, homeworld } = this.state.people;
-    const films = this.state.people.films;
+    const { name, height, mass, hair_color, skin_color, eye_color, birth_year, gender, homeworld } = this.state.person;
+    const films = this.state.person.films;
     const peopleIdNum = this.props.match.params.peopleId;
     const backgroundStyles = {
         backgroundImage: 'url(\'/characters/character-' + peopleIdNum + '.jpg\')',

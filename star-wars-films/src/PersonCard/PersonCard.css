@@ -5,6 +5,12 @@
   border-bottom: 1px solid #c6c6c6;
 }
 
+.person-card h1 {
+  font-family: 'Glegoo', serif;
+  font-size: 1.5rem;
+  color: #585858;
+}
+
 .person-card .container {
   padding: 1rem 1rem .2rem 1rem;
   margin-top: -3rem;
@@ -12,37 +18,7 @@
   position: relative;
 }
 
-.person-card .styleized-font {
-  background-color: white;
-  padding: .6rem;
-  margin-left: -1rem;
-  display: inline-block;
-  position: relative;
-}
-
-.person-card .styleized-font::after {
-  content: '';
-  width: 0;
-  height: 0;
-  border-left: 2rem solid transparent;
-  border-right: 2rem solid transparent;
-  border-bottom: 2rem solid white;
-  position: absolute;
-  top: 0;
-  right: -2rem;
-}
-
-.person-card h1 {
-  font-family: 'Glegoo', serif;
-  font-size: 1.5rem;
-  color: #585858;
-}
-
-.person-card .styleized-font span {
-  z-index: 2;
-  position: relative;
-  color: #c6c6c6;
-}
+/* media */
 
 .person-card .media {
   background-color: #b0b0b0;
@@ -50,10 +26,6 @@
   position: relative;
   background-position: 10% center;
   background-size: cover;
-}
-
-.person-card {
-  width: 32%;
 }
 
 .person-card .media::before {
@@ -80,6 +52,34 @@
   border-bottom: 7rem solid gainsboro;
   left: -7rem;
   opacity: .4;
+}
+
+/* styleized-font */
+
+.person-card .styleized-font {
+  background-color: white;
+  padding: .6rem;
+  margin-left: -1rem;
+  display: inline-block;
+  position: relative;
+}
+
+.person-card .styleized-font::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-bottom: 2rem solid white;
+  position: absolute;
+  top: 0;
+  right: -2rem;
+}
+
+.person-card .styleized-font span {
+  z-index: 2;
+  position: relative;
+  color: #c6c6c6;
 }
 
 @media screen and (max-width: 640px) {

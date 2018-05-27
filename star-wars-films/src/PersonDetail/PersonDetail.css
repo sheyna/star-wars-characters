@@ -5,6 +5,8 @@
   margin-bottom: 4rem
 }
 
+/* media */
+
 .person-detail .media {
   background-color: #b0b0b0;
   position: relative;
@@ -50,6 +52,16 @@
   left: -4rem;
 }
 
+/* content */
+
+.person-detail .content h1 {
+  font-family: 'Glegoo', serif;
+  font-size: 2rem;
+  color: #585858;
+}
+
+/* stats */
+
 .person-detail .stats {
   background-color: white;
   position: relative;
@@ -57,7 +69,34 @@
   z-index: 6;
 }
 
-.person-detail .stats .stats--shape::after {
+.person-detail .stats::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 4rem solid transparent;
+  border-right: 4rem solid transparent;
+}
+
+.person-detail .stats h2 {
+  font-family: 'Glegoo', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* stats children */
+
+.person-detail .stats--shape {
+  background-color: white;
+  height: auto;
+  padding: 0 2rem 2rem 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.person-detail .stats--shape::after {
   content: '';
   width: 0;
   height: 0;
@@ -69,33 +108,11 @@
   left: -4rem;
 }
 
-.person-detail .stats::before {
-  content: '';
-  width: 0;
-  height: 0;
-  position: absolute;
-}
-
-.person-detail .stats .stats--shape {
-  background-color: white;
-  height: auto;
-  padding: 0 2rem 2rem 3rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.person-detail .content h1 {
-  font-family: 'Glegoo', serif;
-  font-size: 2rem;
-  color: #585858;
-}
-
-.person-detail .stats h2 {
-  font-family: 'Glegoo', serif;
-  font-size: 1.2rem;
-  font-weight: 600;
+.person-detail .stats--shape dt,
+.person-detail .stats--shape dd {
+  display: inline-block;
+  position: relative;
+  width: auto;
 }
 
 .person-detail .stats--shape dt {
@@ -110,12 +127,12 @@
   background-color: #f8f8f8;
 }
 
-.person-detail .stats--shape > .stat--chart {
+.person-detail .stat--chart {
   width: 49%;
   padding-top: .4rem;
 }
 
-.person-detail .stats--shape > .stat--notes {
+.person-detail .stat--notes {
   width: 100%;
   flex-basis: 100%;
   margin-top: .8rem;
@@ -123,22 +140,18 @@
   border-bottom: 1px solid gainsboro;
 }
 
-.person-detail .stats--shape > .stat--notes p {
+.person-detail .stat--notes p {
   font-size: 1rem;
   line-height: 1.2;
-}
-
-.person-detail .stats--shape dt,
-.person-detail .stats--shape dd {
-  display: inline-block;
-  position: relative;
-  width: auto;
 }
 
 @media screen and (max-width: 767px) {
   .person-detail {
     flex-direction: column-reverse;
     margin: 0 1rem 1rem 1rem;
+  }
+  .person-detail .media {
+    height: 16rem;
   }
   .person-detail .content {
     flex-basis: auto;
@@ -153,30 +166,28 @@
     padding: 2rem 0 0 0;
     overflow: auto;
   }
-  .person-detail .stats::before {
-    top: 0;
-    border-left: 4rem solid transparent;
-    border-right: 4rem solid transparent;
-    border-top: 4rem solid gainsboro;
-    right: -4rem;
-  }
-  .person-detail .media {
-    height: 16rem;
-  }
-  .person-detail .stats .stats--shape {
-    width: 100%;
-    position: relative;
-  }
   .person-detail .stats h2 {
     margin-top: 0;
     margin-left: 3rem;
     margin-bottom: 1rem;
+  }
+  .person-detail .stats::before {
+    top: 0;
+    border-top: 4rem solid gainsboro;
+    right: -4rem;
+  }
+  .person-detail .stats--shape {
+    width: 100%;
+    position: relative;
   }
 }
 
 @media screen and (min-width: 768px) {
   .person-detail {
     flex-direction: row;
+  }
+  .person-detail .media {
+    height: 24rem;
   }
   .person-detail .content {
     flex-basis: 40%;
@@ -192,23 +203,18 @@
   }
   .person-detail .stats::before {
     top: 2rem;
-    border-left: 4rem solid transparent;
-    border-right: 4rem solid transparent;
     border-bottom: 4rem solid white;
     right: -6rem;
     transform: rotate(90deg);
   }
-  .person-detail .media {
-    height: 24rem;
+  .person-detail .stats h2 {
+    margin-top: -1rem;
+    margin-left: 1rem;
   }
-  .person-detail .stats .stats--shape {
+  .person-detail .stats--shape {
     width: calc(100% + 4rem);
     right: -4rem;
     position: absolute;
     top: 4rem;
-  }
-  .person-detail .stats h2 {
-    margin-top: -1rem;
-    margin-left: 1rem;
   }
 }

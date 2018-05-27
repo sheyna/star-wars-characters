@@ -10,6 +10,21 @@ import PersonCard from './PersonCard/PersonCard';
 import Home from './Home/Home';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 1
+    }
+  }
+
+  HomePage = (props) => {
+    return (
+      <Home
+        page={this.state.page}
+        {...props} />
+    );
+  }
+
 
   render() {
     return (
@@ -23,7 +38,7 @@ class App extends Component {
             <div className="header-shape"></div>
           </header>
           <main>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/" render={this.HomePage} />
             <Route path="/people/:peopleId" component={PersonDetail} />
           </main>
           <footer>

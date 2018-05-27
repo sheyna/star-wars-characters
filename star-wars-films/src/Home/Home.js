@@ -10,7 +10,7 @@ class home extends Component {
     super(props);
     this.state = {
       people: [],
-      page: 1
+      page: this.props.page
     }
   }
 
