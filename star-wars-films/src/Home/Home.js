@@ -4,8 +4,9 @@ import {
   Link
 } from "react-router-dom";
 import './Home.css';
+import PropTypes from 'prop-types';
 
-class home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,4 +78,8 @@ class home extends Component {
   }
 }
 
-export default home;
+Home.propTypes = {
+  page: PropTypes.number.isRequired
+};
+
+export default Home;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './PersonDetail.css';
+import PropTypes from 'prop-types';
 
 class PersonDetail extends Component {
   constructor(props) {
@@ -46,8 +47,8 @@ class PersonDetail extends Component {
   // // tried finalFilmList.forEach and got the same error.
   //
   // {finalFilmList.map((finalFilmList, idx) => {
-  //          return <span>{finalFilmList}, </span>
-  //        })}
+  //    return <span>{finalFilmList}, </span>
+  // })}
 
   getHomePlanet(planet) {
     const planetNames = ["Tatooine","Alderaan","Yavin IV","Hoth","Dagobah","Bespin","Endor","Naboo","Coruscant", "Kamino", "Geonosis", "Utapau", "Mustafar", "Kashyyyk", "Polis Massa", "Mygeeto", "Felucia", "Cato Neimoidia", "Saleucami", "Stewjon", "Eriadu", "Corellia", "Rodia", "Nal Hutta", "Dantooine", "Bestine IV", "Ord Mantell", "unknown", "Trandosha", "Socorro", "Mon Cala", "Chandrila", "Sullust", "Toydaria", "Malastare", "Dathomir", "Ryloth", "Aleen Minor", "Vulpter", "Troiken", "Tund", "Haruun Kal", "Cerea", "Glee Anselm", "Iridonia", "Tholoth", "Iktotch", "Quermia", "Dorin", "Champala", "Mirial", "Serenno", "Concord Dawn","Zolan","Ojom","Skako","Muunilinst","Shili","Kalee","Umbara","Jakku"]
@@ -71,41 +72,59 @@ class PersonDetail extends Component {
     };
     return (
       <div className="page-content">
-      <section className="person-detail">
-        <div className="content">
-          <h1>{name}</h1>
-          <aside className="stats">
-            <h2>Vital Stats</h2>
-            <div className="stats--shape">
-              <div className="stat--chart">
-                <dl><dt>Height:</dt><dd>{height} cm</dd></dl>
-                <dl><dt>Mass:</dt><dd>{mass} kg</dd></dl>
-                <dl><dt>Hair color:</dt><dd>{hair_color}</dd></dl>
-                <dl><dt>Skin color:</dt><dd>{skin_color}</dd></dl>
+        <section className="person-detail">
+          <div className="content">
+            <h1>{name}</h1>
+            <aside className="stats">
+              <h2>Vital Stats</h2>
+              <div className="stats--shape">
+                <div className="stat--chart">
+                  <dl><dt>Height:</dt><dd>{height} cm</dd></dl>
+                  <dl><dt>Mass:</dt><dd>{mass} kg</dd></dl>
+                  <dl><dt>Hair color:</dt><dd>{hair_color}</dd></dl>
+                  <dl><dt>Skin color:</dt><dd>{skin_color}</dd></dl>
+                </div>
+                <div className="stat--chart">
+                  <dl><dt>Eye color:</dt><dd>{eye_color}</dd></dl>
+                  <dl><dt>Birth year:</dt><dd>{birth_year}</dd></dl>
+                  <dl><dt>Gender:</dt><dd>{gender}</dd></dl>
+                  <dl><dt>Homeworld:</dt>{homeworld ? this.getHomePlanet(homeworld) : "unknown"}<dd></dd></dl>
+                </div>
+                <div className="stat--notes">
+                  <p> Appears in: <span className="emph">{films ? this.getFilmList(films) : "none" }</span></p>
+                </div>
               </div>
-              <div className="stat--chart">
-                <dl><dt>Eye color:</dt><dd>{eye_color}</dd></dl>
-                <dl><dt>Birth year:</dt><dd>{birth_year}</dd></dl>
-                <dl><dt>Gender:</dt><dd>{gender}</dd></dl>
-                <dl><dt>Homeworld:</dt>{homeworld ? this.getHomePlanet(homeworld) : "unknown"}<dd></dd></dl>
-              </div>
-              <div className="stat--notes">
-                <p> Appears in: <span className="emph">{films ? this.getFilmList(films) : "none" }</span></p>
-              </div>
-            </div>
-          </aside>
-        </div>
+            </aside>
+          </div>
 
-        <div className="media" style={backgroundStyles}>
-          <div className="styleized-font">{name}</div>
-          <div className="styleized-font">{name}</div>
-        </div>
-      </section>
+          <div className="media" style={backgroundStyles}>
+            <div className="styleized-font">{name}</div>
+            <div className="styleized-font">{name}</div>
+          </div>
+        </section>
       </div>
     )
   }
 }
 
-export default PersonDetail;
+// these PropTypes do not appear to work:
 
+PersonDetail.propTypes = {
+  person: PropTypes.object.isRequired,
+  person: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    height: PropTypes.string,
+    mass: PropTypes.string,
+    hair_color: PropTypes.string,
+    skin_color: PropTypes.string,
+    eye_color: PropTypes.string,
+    birth_year: PropTypes.string,
+    gender: PropTypes.string,
+    homeworld: PropTypes.string,
+    films: PropTypes.array,
+    films: PropTypes.arrayOf(PropTypes.string)
+  })
+};
+
+export default PersonDetail;
 

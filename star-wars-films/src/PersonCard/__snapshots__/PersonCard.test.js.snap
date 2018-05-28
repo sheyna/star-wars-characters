@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonCard component should render 1`] = `
+<div>
+  <div
+    className="person-card"
+  >
+    <a
+      href="/people/1"
+      onClick={[Function]}
+      style={
+        Object {
+          "textDecoration": "none",
+        }
+      }
+    >
+      <div
+        className="media"
+        style={
+          Object {
+            "backgroundImage": "url('/characters/character-1.jpg')",
+          }
+        }
+      />
+      <div
+        className="container"
+      >
+        <p
+          className="styleized-font"
+        >
+          <span>
+            Luke Skywalker
+          </span>
+        </p>
+        <h1>
+          Luke Skywalker
+        </h1>
+      </div>
+    </a>
+  </div>
+  ;
+</div>
+`;

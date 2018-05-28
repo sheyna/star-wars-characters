@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonDetail component should render 1`] = `
+<div
+  className="page-content"
+>
+  <section
+    className="person-detail"
+  >
+    <div
+      className="content"
+    >
+      <h1 />
+      <aside
+        className="stats"
+      >
+        <h2>
+          Vital Stats
+        </h2>
+        <div
+          className="stats--shape"
+        >
+          <div
+            className="stat--chart"
+          >
+            <dl>
+              <dt>
+                Height:
+              </dt>
+              <dd>
+                 cm
+              </dd>
+            </dl>
+            <dl>
+              <dt>
+                Mass:
+              </dt>
+              <dd>
+                 kg
+              </dd>
+            </dl>
+            <dl>
+              <dt>
+                Hair color:
+              </dt>
+              <dd />
+            </dl>
+            <dl>
+              <dt>
+                Skin color:
+              </dt>
+              <dd />
+            </dl>
+          </div>
+          <div
+            className="stat--chart"
+          >
+            <dl>
+              <dt>
+                Eye color:
+              </dt>
+              <dd />
+            </dl>
+            <dl>
+              <dt>
+                Birth year:
+              </dt>
+              <dd />
+            </dl>
+            <dl>
+              <dt>
+                Gender:
+              </dt>
+              <dd />
+            </dl>
+            <dl>
+              <dt>
+                Homeworld:
+              </dt>
+              unknown
+              <dd />
+            </dl>
+          </div>
+          <div
+            className="stat--notes"
+          >
+            <p>
+               Appears in: 
+              <span
+                className="emph"
+              >
+                none
+              </span>
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div
+      className="media"
+      style={
+        Object {
+          "backgroundImage": "url('/characters/character-1.jpg')",
+        }
+      }
+    >
+      <div
+        className="styleized-font"
+      />
+      <div
+        className="styleized-font"
+      />
+    </div>
+  </section>
+</div>
+`;

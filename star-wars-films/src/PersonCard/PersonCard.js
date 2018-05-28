@@ -3,6 +3,7 @@ import './PersonCard.css';
 import {
   Link
 } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 class PersonCard extends Component {
 
@@ -27,5 +28,15 @@ class PersonCard extends Component {
     )
   }
 }
+
+// these PropTypes do not appear to work:
+
+PersonCard.propTypes = {
+  people: PropTypes.object.isRequired,
+  people: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  })
+};
 
 export default PersonCard;
