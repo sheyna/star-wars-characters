@@ -12,7 +12,6 @@
   position: relative;
   background-position: center right;
   background-size: cover;
-  flex-basis: 60%;
   overflow: hidden;
   flex-shrink: 1;
 }
@@ -188,6 +187,7 @@
   }
   .person-detail .media {
     height: 24rem;
+    flex-basis: 60%;
   }
   .person-detail .content {
     flex-basis: 40%;

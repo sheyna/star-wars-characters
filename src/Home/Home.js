@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import PersonCard from '../PersonCard/PersonCard';
-import {
-  Link
-} from "react-router-dom";
 import './Home.css';
 import PropTypes from 'prop-types';
 
@@ -16,7 +13,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://swapi.co/api/people/?page=${this.state.page}`)
+    fetch(`https://swapi.dev/api/people/?page=${this.state.page}`)
       .then(response => response.json())
       .then(data => {
         if (data.results.length > 0) {

@@ -29,14 +29,12 @@ class PersonCard extends Component {
   }
 }
 
-// these PropTypes do not appear to work:
 
 PersonCard.propTypes = {
-  people: PropTypes.object.isRequired,
   people: PropTypes.shape({
     url: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
-  })
+  }).isRequired
 };
 
 export default PersonCard;

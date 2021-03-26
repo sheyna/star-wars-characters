@@ -12,7 +12,7 @@ class PersonDetail extends Component {
 
   componentDidMount() {
     const peopleId = this.props.match.params.peopleId;
-    fetch(`https://swapi.co/api/people/${peopleId}/`)
+    fetch(`https://swapi.dev/api/people/${peopleId}/`)
       .then(response => response.json())
       .then(data => {
         this.setState((prevState, props) => {
@@ -107,10 +107,7 @@ class PersonDetail extends Component {
   }
 }
 
-// these PropTypes do not appear to work:
-
 PersonDetail.propTypes = {
-  person: PropTypes.object.isRequired,
   person: PropTypes.shape({
     name: PropTypes.string.isRequired,
     height: PropTypes.string,
@@ -121,7 +118,6 @@ PersonDetail.propTypes = {
     birth_year: PropTypes.string,
     gender: PropTypes.string,
     homeworld: PropTypes.string,
-    films: PropTypes.array,
     films: PropTypes.arrayOf(PropTypes.string)
   })
 };

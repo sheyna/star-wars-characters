@@ -6,7 +6,6 @@ import {
   BrowserRouter as Router
 } from "react-router-dom";
 import PersonDetail from './PersonDetail/PersonDetail';
-import PersonCard from './PersonCard/PersonCard';
 import Home from './Home/Home';
 
 class App extends Component {
