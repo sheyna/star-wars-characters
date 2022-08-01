@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import axios from 'axios';
 import PersonCard from '../PersonCard/PersonCard';
 import './Home.css';
+
 import PropTypes from 'prop-types';
 
-class Home extends Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,26 +14,13 @@ class Home extends Component {
     }
   }
 
-  componentDidMount() {
-    fetch(`https://swapi.dev/api/people/?page=${this.state.page}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.results.length > 0) {
-        this.setState((prevState, props) => {
-          return {
-            people: data.results
-          };
-        });
-      } else {
-        this.setState((prevState, props) => {
-          return {
-            people: []
-          };
-        });
-      }
-      })
-      .catch(error => console.log(error));
-  };
+  componentDidMount = async () => {
+    let url = `https://swapi.dev/api/people/?page=${this.state.page}`;
+    let res = await axios.get(url);
+    this.setState({
+        people: res.data.results
+    });
+  }
 
   next = () => {
     this.setState((prevState) => {
@@ -57,7 +46,7 @@ class Home extends Component {
     );
   }
 
-  render() {
+  render () {
     const people = this.state.people;
     return (
       <div className="home">
@@ -75,8 +64,9 @@ class Home extends Component {
   }
 }
 
+export default Home;
+
+
 Home.propTypes = {
   page: PropTypes.number.isRequired
 };
-
-export default Home;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import './PersonCard.css';
 import {
   Link
@@ -12,23 +12,22 @@ class PersonCard extends Component {
     const url = people.url;
     const indexNumber = url.split('/').reverse()[1];
     const backgroundMediaStyles = {
-        backgroundImage: 'url(\'/characters/character-' + indexNumber + '.jpg\')',
+      backgroundImage: 'url(\'/characters/character-' + indexNumber + '.jpg\')',
     };
-    return (
 
+    return (
       <div className="person-card">
-      <Link to={`/people/${indexNumber}`} style={{ textDecoration: 'none' }}>
-        <div className="media" style={backgroundMediaStyles}></div>
-        <div className="container">
-          <p className="styleized-font"><span>{people.name}</span></p>
-          <h1>{people.name}</h1>
-        </div>
+        <Link to={`/people/${indexNumber}`} style={{ textDecoration: 'none' }}>
+          <div className="media" style={backgroundMediaStyles}></div>
+          <div className="container">
+            <p className="styleized-font"><span>{people.name}</span></p>
+            <h1>{people.name}</h1>
+          </div>
         </Link>
       </div>
     )
   }
 }
-
 
 PersonCard.propTypes = {
   people: PropTypes.shape({
