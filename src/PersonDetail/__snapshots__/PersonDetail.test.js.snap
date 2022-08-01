@@ -100,7 +100,7 @@ exports[`PersonDetail component should render 1`] = `
       className="media"
       style={
         Object {
-          "backgroundImage": "url('/characters/character-1.jpg')",
+          "backgroundImage": "url('/characters/character-undefined.jpg')",
         }
       }
     >

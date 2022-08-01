@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import {
   Route,
+  Routes,
   Link,
   BrowserRouter as Router
 } from "react-router-dom";
 import PersonDetail from './PersonDetail/PersonDetail';
 import Home from './Home/Home';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,13 +17,13 @@ class App extends Component {
     }
   }
 
-  HomePage = (props) => {
-    return (
-      <Home
-        page={this.state.page}
-        {...props} />
-    );
-  }
+  // HomePage = (props) => {
+  //   return (
+  //     <Home
+  //       page={this.state.page}
+  //       {...props} />
+  //   );
+  // }
 
 
   render() {
@@ -37,13 +38,14 @@ class App extends Component {
             <div className="header-shape"></div>
           </header>
           <main>
-            <Route exact path="/" render={this.HomePage} />
-            <Route path="/people/:peopleId" component={PersonDetail} />
+            <Routes>
+              <Route exact path="/" element={<Home page={this.state.page} />} />
+              <Route path="/people/:peopleId" element={<PersonDetail/>} />
+            </Routes>
           </main>
           <footer>
             <div className="footer-shape">
               <p>A project by <span className="emph">Sheyna Watkins</span></p>
-              <p>for JSCRIPT 300 A Sp 18: Modern Web Application</p>
             </div>
           </footer>
         </div>

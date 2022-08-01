@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import './PersonDetail.css';
 import PropTypes from 'prop-types';
+
+// withParams function from: https://stackoverflow.com/a/72961184/5047481
+function withParams(Component) {
+  return (props) => <Component {...props} params={useParams()} />;
+}
 
 class PersonDetail extends Component {
   constructor(props) {
@@ -10,18 +17,13 @@ class PersonDetail extends Component {
     }
   }
 
-  componentDidMount() {
-    const peopleId = this.props.match.params.peopleId;
-    fetch(`https://swapi.dev/api/people/${peopleId}/`)
-      .then(response => response.json())
-      .then(data => {
-        this.setState((prevState, props) => {
-          return {
-            person: data
-          };
-        });
-      })
-      .catch(error => console.log(error));
+  componentDidMount = async () => {
+    const peopleId = this.props.params.peopleId;
+    let url = `https://swapi.dev/api/people/${peopleId}/`
+    let res = await axios.get(url);
+    this.setState({
+        person: res.data
+    });
   };
 
   getFilmList(films) {
@@ -66,9 +68,11 @@ class PersonDetail extends Component {
   render() {
     const { name, height, mass, hair_color, skin_color, eye_color, birth_year, gender, homeworld } = this.state.person;
     const films = this.state.person.films;
-    const peopleIdNum = this.props.match.params.peopleId;
+    //let { peopleId } = useParams();
+    const peopleId = this.props.params.peopleId;
+    //const peopleIdNum = this.props.match.params.peopleId;
     const backgroundStyles = {
-        backgroundImage: 'url(\'/characters/character-' + peopleIdNum + '.jpg\')',
+        backgroundImage: 'url(\'/characters/character-' + peopleId + '.jpg\')',
     };
     return (
       <div className="page-content">
@@ -122,5 +126,4 @@ PersonDetail.propTypes = {
   })
 };
 
-export default PersonDetail;
-
+export default withParams(PersonDetail);

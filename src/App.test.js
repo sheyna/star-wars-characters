@@ -1,9 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
+import ReactTestRenderer from 'react-test-renderer';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('PersonCard component', () => {
+  it('should render an h1', () => {
+    // create the component
+    const component = ReactTestRenderer.create(<App />);
+
+    // find the root
+    const instance = component.root;
+
+    // look for the H1
+    const element = instance.findByType('h1');
+
+    // check if the H1 text inludes the words 'Character Index'
+    expect(element.props.children.includes('Character Index')).toBe(true);
+  });
 });

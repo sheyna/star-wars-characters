@@ -4,7 +4,6 @@ import ReactTestRenderer from 'react-test-renderer';
 import {
   MemoryRouter
 } from "react-router-dom";
-import PropTypes from 'prop-types';
 
 describe('PersonCard component', () => {
   it('should render', () => {
