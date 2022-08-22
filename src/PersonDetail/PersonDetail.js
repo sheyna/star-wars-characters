@@ -27,33 +27,29 @@ class PersonDetail extends Component {
   };
 
   getFilmList(films) {
-    const filmNames = ["A New Hope", "The Empire Strikes Back", "Return of the Jedi", "The Phantom Menace", "Attack of the Clones", "Revenge of the Sith", "The Force Awakens", "The Last Jedi"];
-    let finalFilmList = '';
-    for (let i = 0; i < films.length; i++){
-      const url = films[i];
-      let filmNum = url.split('/').reverse()[1];
+    const filmNames = ["A New Hope", "The Empire Strikes Back", "Return of the Jedi", "The Phantom Menace", "Attack of the Clones", "Revenge of the Sith", "The Force Awakens", "The Last Jedi", "The Rise of Skywalker"];
+    let finalFilmList = [];
+    films.forEach(film => {
+      let filmNum = film.split('/').reverse()[1];
       filmNum = filmNum - 1;
-      finalFilmList += filmNames[filmNum];
-      if (i < (films.length - 1)) {
-        finalFilmList += ", ";
-      }
-    }
+      finalFilmList.push(filmNames[filmNum]);
+    })
+    let componetizedFilmList = finalFilmList.map((finalFilmList, idx) => {
+        return (
+          <span key={idx}>
+            {finalFilmList}{idx < (films.length - 1) && ','} 
+          </span>
+        )
+    })
     return (
       <span>
-        {finalFilmList}
+        {componetizedFilmList}
       </span>
     );
   };
-  // // Can't do below as return statement in getFilmList
-  // // tells me that finalFilmList.map is not a function;
-  // // tried finalFilmList.forEach and got the same error.
-  //
-  // {finalFilmList.map((finalFilmList, idx) => {
-  //    return <span>{finalFilmList}, </span>
-  // })}
 
   getHomePlanet(planet) {
-    const planetNames = ["Tatooine","Alderaan","Yavin IV","Hoth","Dagobah","Bespin","Endor","Naboo","Coruscant", "Kamino", "Geonosis", "Utapau", "Mustafar", "Kashyyyk", "Polis Massa", "Mygeeto", "Felucia", "Cato Neimoidia", "Saleucami", "Stewjon", "Eriadu", "Corellia", "Rodia", "Nal Hutta", "Dantooine", "Bestine IV", "Ord Mantell", "unknown", "Trandosha", "Socorro", "Mon Cala", "Chandrila", "Sullust", "Toydaria", "Malastare", "Dathomir", "Ryloth", "Aleen Minor", "Vulpter", "Troiken", "Tund", "Haruun Kal", "Cerea", "Glee Anselm", "Iridonia", "Tholoth", "Iktotch", "Quermia", "Dorin", "Champala", "Mirial", "Serenno", "Concord Dawn","Zolan","Ojom","Skako","Muunilinst","Shili","Kalee","Umbara","Jakku"]
+    const planetNames = ["Tatooine", "Alderaan", "Yavin IV", "Hoth", "Dagobah", "Bespin", "Endor", "Naboo","Coruscant", "Kamino", "Geonosis", "Utapau", "Mustafar", "Kashyyyk", "Polis Massa", "Mygeeto", "Felucia", "Cato Neimoidia", "Saleucami", "Stewjon", "Eriadu", "Corellia", "Rodia", "Nal Hutta", "Dantooine", "Bestine IV", "Ord Mantell", "unknown", "Trandosha", "Socorro", "Mon Cala", "Chandrila", "Sullust", "Toydaria", "Malastare", "Dathomir", "Ryloth", "Aleen Minor", "Vulpter", "Troiken", "Tund", "Haruun Kal", "Cerea", "Glee Anselm", "Iridonia", "Tholoth", "Iktotch", "Quermia", "Dorin", "Champala", "Mirial", "Serenno", "Concord Dawn", "Zolan", "Ojom", "Skako", "Muunilinst", "Shili", "Kalee", "Umbara", "Jakku"]
     const url = planet;
     let planetNum = url.split('/').reverse()[1];
     planetNum = planetNum - 1;
