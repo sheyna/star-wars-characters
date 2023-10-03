@@ -1,14 +1,11 @@
-import { Component } from 'react';
 import './PersonCard.css';
 import {
   Link
 } from "react-router-dom";
 import PropTypes from 'prop-types';
 
-class PersonCard extends Component {
+function PersonCard({people}) {
 
-  render() {
-    const people = this.props.people;
     const url = people.url;
     const indexNumber = url.split('/').reverse()[1];
     const backgroundMediaStyles = {
@@ -26,7 +23,7 @@ class PersonCard extends Component {
         </Link>
       </div>
     )
-  }
+
 }
 
 PersonCard.propTypes = {
